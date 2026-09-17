@@ -152,7 +152,6 @@
     .date-picker-card { background: #161B22; border: 1.5px solid #21262D; border-radius: 14px; padding: 12px; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
     .date-picker-card input[type="date"] { background: #0D1117; border: 1px solid #30363D; color: #00E676; padding: 7px; border-radius: 7px; font-size: 13px; font-weight: 700; outline: none; flex: 1; }
 
-    /* 💾 檔案備份/儲存區域 */
     .storage-card { background: #161B22; border: 1.5px solid #21262D; border-radius: 14px; padding: 12px; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
     .backup-btn-group { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
     .backup-btn { flex: 1; min-width: 110px; padding: 8px; background: #21262D; color: #38BDF8; border: 1px solid #30363D; border-radius: 8px; font-weight: 700; font-size: 12px; cursor: pointer; text-align: center; }
@@ -170,7 +169,6 @@
 
     .btn-del-day { background: rgba(239, 68, 68, 0.15); color: #F87171; border: 1px solid rgba(239, 68, 68, 0.4); padding: 4px 9px; border-radius: 7px; font-size: 11px; font-weight: 700; cursor: pointer; }
 
-    /* 🖥️ 💻 RWD 響應式佈局 (平板與電腦版) */
     @media (min-width: 768px) {
       body { padding: 24px 16px; }
       .app-container { max-width: 900px; }
@@ -184,7 +182,6 @@
       .app-container { max-width: 1050px; }
     }
 
-    /* ☀️ 白天模式 */
     body.day-theme { background-color: #F3F4F6; color: #0F172A; }
     body.day-theme .header { color: #059669; text-shadow: none; }
     body.day-theme .main-nav { background: #FFFFFF; border-color: #CBD5E1; }
@@ -240,21 +237,20 @@
 <body>
 
 <div class="app-container">
-  <div class="header">⚡ 外送專法秒級精準計時神器</div>
+  <div class="header">&#x26A1; 外送專法秒級精準計時神器</div>
 
   <div class="main-nav">
-    <button class="nav-tab active" id="tabTimerBtn" onclick="switchView('timer')">⚡ 跑單計時</button>
-    <button class="nav-tab" id="tabReportBtn" onclick="switchView('report')">📊 日結報表 (06:00切換)</button>
+    <button class="nav-tab active" id="tabTimerBtn" onclick="switchView('timer')">&#x26A1; 跑單計時</button>
+    <button class="nav-tab" id="tabReportBtn" onclick="switchView('report')">&#x1F4CA; 日結報表 (06:00切換)</button>
   </div>
 
   <div id="timerView">
     <div class="section-label">
       <span>接單形態 / 新單起算：</span>
-      <button id="themeToggleBtn" class="theme-toggle-btn" onclick="toggleManualTheme()">🌙 夜間模式 (按此切換)</button>
+      <button id="themeToggleBtn" class="theme-toggle-btn" onclick="toggleManualTheme()">&#x1F319; 夜間模式 (按此切換)</button>
     </div>
 
     <div class="rwd-flex-layout">
-      <!-- 左側/上方：控制與計時器 -->
       <div>
         <div class="btn-group">
           <button class="type-btn active" id="btnSingleOrder" onclick="handlePresetOrNewSingle(1, this)">1 單 (獨立起算/新單)</button>
@@ -317,8 +313,8 @@
           </div>
 
           <div class="timer-ctrls">
-            <button class="btn btn-start" id="startBtn" onclick="startMasterTimer()">🚀 開始接單起算</button>
-            <button class="btn btn-reset-sm" onclick="resetAll()">🔄 重置</button>
+            <button class="btn btn-start" id="startBtn" onclick="startMasterTimer()">&#x1F680; 開始接單起算</button>
+            <button class="btn btn-reset-sm" onclick="resetAll()">&#x1F504; 重置</button>
           </div>
 
           <div class="section-label" style="margin-top: 10px; text-align: left; display: block;">各單獨立計時計時與送達確認：</div>
@@ -326,10 +322,9 @@
         </div>
       </div>
 
-      <!-- 右側/下方：當日即時明細 -->
       <div>
         <div class="records-header">
-          <span>📋 本日即時跑單明細</span>
+          <span>&#x1F4CB; 本日即時跑單明細</span>
           <span id="dayTotal" style="color: #00E676; font-size: 17px;">累計: $0.00</span>
         </div>
         <div id="recordsList"></div>
@@ -338,9 +333,8 @@
   </div>
 
   <div id="reportView" style="display: none;">
-    <!-- 日期篩選區塊 -->
     <div class="date-picker-card">
-      <div class="section-label" style="margin-bottom: 6px;">🗓️ 選擇查詢日期區間 (06:00 跑單日)：</div>
+      <div class="section-label" style="margin-bottom: 6px;">&#x1F5D3;&#xFE0F; 選擇查詢日期區間 (06:00 跑單日)：</div>
       <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
         <input type="date" id="startDate" onchange="renderDailyReport()">
         <span style="color: #8A99AD; font-size: 12px; font-weight: 700;">至</span>
@@ -349,14 +343,13 @@
       </div>
     </div>
 
-    <!-- 💾 儲存與備份紀錄功能 -->
     <div class="storage-card">
-      <div class="section-label" style="margin-bottom: 4px;">💾 紀錄儲存與備份管理：</div>
+      <div class="section-label" style="margin-bottom: 4px;">&#x1F4BE; 紀錄儲存與備份管理：</div>
       <div style="font-size: 11px; color: #8A99AD; margin-bottom: 8px;">跑單資料已自動儲存於瀏覽器 LocalStorage 中，亦可匯出檔案備份：</div>
       <div class="backup-btn-group">
-        <button class="backup-btn" onclick="exportRecordsJSON()">📥 匯出 JSON 備份</button>
-        <button class="backup-btn" onclick="exportRecordsCSV()">📊 匯出 CSV 報表</button>
-        <button class="backup-btn" onclick="document.getElementById('importFileInput').click()">📤 匯入 JSON 備份</button>
+        <button class="backup-btn" onclick="exportRecordsJSON()">&#x1F4E5; 匯出 JSON 備份</button>
+        <button class="backup-btn" onclick="exportRecordsCSV()">&#x1F4CA; 匯出 CSV 報表</button>
+        <button class="backup-btn" onclick="document.getElementById('importFileInput').click()">&#x1F4E4; 匯入 JSON 備份</button>
         <input type="file" id="importFileInput" style="display: none;" accept=".json" onchange="importRecordsJSON(event)">
       </div>
     </div>
@@ -398,7 +391,6 @@
     return `${m}分${s}秒`;
   }
 
-  /* 💾 自動儲存與載入功能 */
   function loadRecords() {
     try {
       const saved = localStorage.getItem('delivery_records_v2');
@@ -445,7 +437,6 @@
     } catch(e) {}
   }
 
-  /* 📤 📥 備份匯出與匯入功能 */
   function exportRecordsJSON() {
     if (records.length === 0) {
       alert("目前尚無任何跑單紀錄可備份！");
@@ -503,7 +494,7 @@
             saveRecords();
             renderRecords();
             renderDailyReport();
-            alert("🎉 紀錄備份成功匯入！");
+            alert("\uD83C\uDF89 紀錄備份成功匯入！");
           }
         } else {
           alert("匯入失敗：檔案格式不正確！");
@@ -562,11 +553,11 @@
 
     if (isDay) {
       document.body.classList.add('day-theme');
-      if (btn) btn.innerHTML = '☀️ 白天模式';
+      if (btn) btn.innerHTML = '\u2600\uFE0F 白天模式';
       if (themeMeta) themeMeta.setAttribute('content', '#F3F4F6');
     } else {
       document.body.classList.remove('day-theme');
-      if (btn) btn.innerHTML = '🌙 夜間模式';
+      if (btn) btn.innerHTML = '\uF319 夜間模式';
       if (themeMeta) themeMeta.setAttribute('content', '#0B0E14');
     }
   }
@@ -678,7 +669,7 @@
     if (!isRunning) {
       isRunning = true;
       document.getElementById('startBtn').style.opacity = '0.5';
-      document.getElementById('startBtn').innerText = '⚡ 配送進行中...';
+      document.getElementById('startBtn').innerText = '\u26A1 配送進行中...';
       document.getElementById('driverAnimBox').classList.add('active');
       if (mainTimerInterval) clearInterval(mainTimerInterval);
       mainTimerInterval = setInterval(updateTimerDisplay, 500);
@@ -720,7 +711,7 @@
       item.offerPrice = parseFloat(value) || 0;
       const badge = document.getElementById(`sub-badge-price-${id}`);
       if (badge) {
-        badge.innerText = `💰 單價 ${item.offerPrice > 0 ? '$' + item.offerPrice : '未填'}`;
+        badge.innerText = `\uD83D\uDCB0 單價 ${item.offerPrice > 0 ? '$' + item.offerPrice : '未填'}`;
       }
       if (item.isCompleted) {
         const basePrice = item.offerPrice > 0 ? item.offerPrice : 45.0;
@@ -777,7 +768,7 @@
     });
 
     document.getElementById('startBtn').style.opacity = '0.5';
-    document.getElementById('startBtn').innerText = '⚡ 配送進行中...';
+    document.getElementById('startBtn').innerText = '\u26A1 配送進行中...';
     document.getElementById('driverAnimBox').classList.add('active');
 
     renderSubOrders();
@@ -790,7 +781,7 @@
     clearInterval(mainTimerInterval);
     const btn = document.getElementById('startBtn');
     btn.style.opacity = '1';
-    btn.innerText = '🚀 開始接單起算';
+    btn.innerText = '\u1F680 開始接單起算';
     
     document.getElementById('driverAnimBox').classList.remove('active');
   }
@@ -817,7 +808,7 @@
     if (!item || item.isCompleted) return;
 
     if (!item.startTimestamp) {
-      alert("此單尚未開始計時，請先點擊「🚀 開始接單起算」！");
+      alert("此單尚未開始計時，請先點擊「\u1F680 開始接單起算」！");
       return;
     }
 
@@ -866,7 +857,7 @@
 
       let timerBadgeHtml = `
         <div class="sub-timer-badge">
-          <span>⏱️ 此單獨立計時：</span>
+          <span>\u23F1\uFE0F 此單獨立計時：</span>
           <span class="sub-timer-val" id="sub-timer-val-${o.id}">${formatTime(liveSecs)}</span>
         </div>
       `;
@@ -876,10 +867,10 @@
         contentHtml = `
           ${timerBadgeHtml}
           <div style="display: flex; gap: 8px; margin-bottom: 10px;">
-            <input type="number" class="restaurant-input" style="width: 100px; margin-bottom: 0;" placeholder="💰 單價" value="${o.offerPrice > 0 ? o.offerPrice : ''}" inputmode="numeric" onfocus="this.select()" oninput="updateSubOfferPrice(${o.id}, this.value)">
-            <input type="text" class="restaurant-input" style="flex: 1; margin-bottom: 0;" placeholder="🏪 餐廳名稱 (選填)" value="${o.restaurant}" oninput="updateRestaurant(${o.id}, this.value)">
+            <input type="number" class="restaurant-input" style="width: 100px; margin-bottom: 0;" placeholder="\uD83D\uDCB0 單價" value="${o.offerPrice > 0 ? o.offerPrice : ''}" inputmode="numeric" onfocus="this.select()" oninput="updateSubOfferPrice(${o.id}, this.value)">
+            <input type="text" class="restaurant-input" style="flex: 1; margin-bottom: 0;" placeholder="\uD83C\uDFEA 餐廳名稱 (選填)" value="${o.restaurant}" oninput="updateRestaurant(${o.id}, this.value)">
           </div>
-          <button class="btn-sub-complete" onclick="completeSubOrder(${o.id})">🏁 完成 ${o.label} 送達</button>
+          <button class="btn-sub-complete" onclick="completeSubOrder(${o.id})">\uD83C\uDFC1 完成 ${o.label} 送達</button>
         `;
       } else {
         const restName = o.restaurant.trim() ? `【${o.restaurant.trim()}】` : '';
@@ -890,8 +881,8 @@
 
         contentHtml = `
           <div class="sub-info-box">
-            ✅ <strong>[${o.completedClockTime}] 送達完成 ${restName}：</strong>獨立歷時 <strong>${o.timeText}</strong> | 公式時間金額 <strong>$${o.rawTimePay.toFixed(2)}</strong><br>
-            💡 ${subsidyText}
+            \u2705 <strong>[${o.completedClockTime}] 送達完成 ${restName}：</strong>獨立歷時 <strong>${o.timeText}</strong> | 公式時間金額 <strong>$${o.rawTimePay.toFixed(2)}</strong><br>
+            \uD83D\uDCA1 ${subsidyText}
           </div>
         `;
       }
@@ -899,8 +890,8 @@
       card.innerHTML = `
         <div class="sub-header">
           <div class="sub-title">
-            <span>📦 ${o.label}</span>
-            <span class="order-price-badge" id="sub-badge-price-${o.id}">?? 單價 ${priceDisplay}</span>
+            <span>\uD83D\uDCE6 ${o.label}</span>
+            <span class="order-price-badge" id="sub-badge-price-${o.id}">\uD83D\uDCB0 單價 ${priceDisplay}</span>
           </div>
           <div class="sub-badge">${o.isCompleted ? `已送達 (${o.completedClockTime})` : (o.startTimestamp ? '配送計時中...' : '等待接單')}</div>
         </div>
@@ -925,7 +916,7 @@
     const totalIncome = totalOffer + totalTimeSubsidy;
 
     setTimeout(() => {
-      alert(`🎉 跑單全數送達！\n接單單價加總：$${totalOffer.toFixed(2)}\n超過單價時間補貼：+$${totalTimeSubsidy.toFixed(2)}\n最終實拿總額：$${totalIncome.toFixed(2)}`);
+      alert(`\uD83C\uDF89 跑單全數送達！\n接單單價加總：$${totalOffer.toFixed(2)}\n超過單價時間補貼：+$${totalTimeSubsidy.toFixed(2)}\n最終實拿總額：$${totalIncome.toFixed(2)}`);
       document.getElementById('offerPrice').value = '';
       initOrders(1);
       document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
@@ -982,7 +973,7 @@
   }
 
   function deleteDailyRecords(wDate) {
-    if (confirm(`⚠️ 確定要刪除 ${wDate} 的整日跑單紀錄嗎？此動作無法復原。`)) {
+    if (confirm(`\u26A0\uFE0F 確定要刪除 ${wDate} 的整日跑單紀錄嗎？此動作無法復原。`)) {
       records = records.filter(r => (r.workday || getWorkdayDate(r.timestamp || r.id)) !== wDate);
       saveRecords();
       renderRecords();
@@ -1003,7 +994,7 @@
       
       let subRowsHtml = r.subOrders.map((so, idx) => {
         const nameText = so.restaurant ? `<span class="rec-rest">[${so.restaurant}]</span>` : '';
-        const clockText = so.completedClockTime ? `<span class="rec-clock">⏰ ${so.completedClockTime}</span>` : '';
+        const clockText = so.completedClockTime ? `<span class="rec-clock">\u23F0 ${so.completedClockTime}</span>` : '';
         
         const secs = so.elapsedSecs !== undefined ? so.elapsedSecs : parseTimeTextToSecs(so.timeText);
         const mVal = Math.floor(secs / 60);
@@ -1013,7 +1004,7 @@
           ${clockText}
           <span class="rec-label">${so.label}</span>${nameText}
           <div style="margin-top:3px; display:flex; align-items:center; gap:4px; flex-wrap:wrap;">
-            <span>⏱️ 時間:</span>
+            <span>\u23F1\uFE0F 時間:</span>
             <input type="number" id="rec-min-input-${r.id}-${idx}" class="rec-time-input" value="${mVal}" inputmode="numeric" onfocus="this.select()">分
             <input type="number" id="rec-sec-input-${r.id}-${idx}" class="rec-time-input" value="${sVal}" inputmode="numeric" onfocus="this.select()">秒
             <button type="button" class="btn-rec-done" onclick="updateRecordDetail(${r.id}, ${idx})">修改</button>
@@ -1026,10 +1017,10 @@
       item.className = 'record-item';
       item.innerHTML = `
         <div class="record-info">
-          <div style="font-weight:bold; margin-bottom:4px; font-size:13px;">📦 ${r.stackCount} 趟明細</div>
+          <div style="font-weight:bold; margin-bottom:4px; font-size:13px;">\uD83D\uDCE6 ${r.stackCount} 趟明細</div>
           ${subRowsHtml}
           <div style="font-size:11px; opacity:0.9; margin-top:4px; display:flex; align-items:center; gap:4px;">
-            <span>💰 單價: $</span>
+            <span>\uD83D\uDCB0 單價: $</span>
             <input type="number" id="rec-offer-input-${r.id}" class="rec-offer-input" value="${r.offerPrice}" inputmode="numeric" onfocus="this.select()" onchange="updateRecordDetail(${r.id}, 0)">
           </div>
         </div>
@@ -1123,8 +1114,8 @@
 
     const isFiltered = startVal || endVal;
     const titleText = isFiltered 
-      ? `🎯 選取區間總計 (${startVal || '起'} ~ ${endVal || '迄'})` 
-      : '🏆 歷史全體總累計報表';
+      ? `\uD83C\uDFAF 選取區間總計 (${startVal || '起'} ~ ${endVal || '迄'})` 
+      : '\uD83C\uDFC6 歷史全體總累計報表';
 
     const summaryCard = document.createElement('div');
     summaryCard.className = 'daily-card';
@@ -1164,8 +1155,8 @@
 
       card.innerHTML = `
         <div class="daily-title">
-          <span>📅 ${g.date} 跑單日 (${g.totalOrders} 單)</span>
-          <button class="btn-del-day" onclick="deleteDailyRecords('${g.date}')">🗑️ 刪除此日</button>
+          <span>\uD83D\uDCC5 ${g.date} 跑單日 (${g.totalOrders} 單)</span>
+          <button class="btn-del-day" onclick="deleteDailyRecords('${g.date}')">\uD83D\uDDD1\uFE0F 刪除此日</button>
         </div>
         <div class="daily-grid">
           <div class="daily-stat">
