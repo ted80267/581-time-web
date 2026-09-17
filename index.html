@@ -13,9 +13,9 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; -webkit-tap-highlight-color: transparent; }
     
     body { background-color: #0B0E14; color: #F0F4F8; padding: 14px 10px; display: flex; justify-content: center; min-height: 100vh; transition: background-color 0.3s, color 0.3s; }
-    .app-container { width: 100%; max-width: 415px; }
     
-    .header { text-align: center; font-size: 21px; font-weight: 800; margin-bottom: 14px; color: #00E676; letter-spacing: 0.5px; text-shadow: 0 0 10px rgba(0, 230, 118, 0.3); }
+    .app-container { width: 100%; max-width: 430px; margin: 0 auto; transition: max-width 0.3s ease; }
+    .header { text-align: center; font-size: 22px; font-weight: 800; margin-bottom: 14px; color: #00E676; letter-spacing: 0.5px; text-shadow: 0 0 10px rgba(0, 230, 118, 0.3); }
     
     .main-nav { display: flex; gap: 8px; margin-bottom: 14px; background: #161B22; padding: 4px; border-radius: 14px; border: 1.5px solid #21262D; }
     .nav-tab { flex: 1; padding: 11px 0; text-align: center; font-size: 14px; font-weight: 800; color: #8A99AD; border: none; background: transparent; border-radius: 10px; cursor: pointer; transition: all 0.2s; }
@@ -37,7 +37,7 @@
       background: #161B22;
       border: 1.5px solid #30363D;
       color: #38BDF8;
-      padding: 4px 10px;
+      padding: 5px 12px;
       border-radius: 8px;
       font-size: 12px;
       font-weight: 700;
@@ -131,12 +131,11 @@
     .btn-sub-complete { width: 100%; padding: 13px; background: #4FC3F7; color: #050B14; font-size: 15px; font-weight: 800; border: none; border-radius: 10px; cursor: pointer; box-shadow: 0 3px 8px rgba(79, 195, 247, 0.3); }
     .sub-info-box { background: rgba(0,0,0,0.3); border-radius: 8px; padding: 9px; font-size: 12px; color: #C9D1D9; line-height: 1.5; }
 
-    .records-header { font-size: 15px; font-weight: 700; margin: 20px 0 12px 0; color: #C9D1D9; display: flex; justify-content: space-between; align-items: center; }
+    .records-header { font-size: 15px; font-weight: 700; margin: 20px 0 12px 0; color: #C9D1D9; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
     .record-item { background: #161B22; border: 1.5px solid #21262D; border-radius: 14px; padding: 13px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
     .record-info { font-size: 12px; line-height: 1.6; color: #C9D1D9; flex: 1; padding-right: 8px; }
     
     .rec-clock { color: #38BDF8; font-weight: 800; font-size: 12px; margin-right: 4px; }
-    .rec-elapsed { color: #FFD700; font-size: 15px; font-weight: 900; margin: 0 2px; display: inline-block; }
     .rec-rest { color: #34D399; font-weight: 700; margin-left: 2px; }
     .rec-label { color: #00E676; font-weight: 800; }
     .rec-details-sub { color: #8A99AD; font-size: 11px; margin-top: 2px; }
@@ -151,7 +150,13 @@
     .btn-del { background: rgba(239, 68, 68, 0.15); color: #F87171; border: 1px solid rgba(239, 68, 68, 0.4); padding: 7px 11px; border-radius: 7px; font-size: 11px; font-weight: 700; margin-left: 6px; cursor: pointer; }
 
     .date-picker-card { background: #161B22; border: 1.5px solid #21262D; border-radius: 14px; padding: 12px; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-    .date-picker-card input[type="date"] { background: #0D1117; border: 1px solid #30363D; color: #00E676; padding: 7px; border-radius: 7px; font-size: 13px; font-weight: 700; outline: none; width: 100%; }
+    .date-picker-card input[type="date"] { background: #0D1117; border: 1px solid #30363D; color: #00E676; padding: 7px; border-radius: 7px; font-size: 13px; font-weight: 700; outline: none; flex: 1; }
+
+    /* 💾 檔案備份/儲存區域 */
+    .storage-card { background: #161B22; border: 1.5px solid #21262D; border-radius: 14px; padding: 12px; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+    .backup-btn-group { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+    .backup-btn { flex: 1; min-width: 110px; padding: 8px; background: #21262D; color: #38BDF8; border: 1px solid #30363D; border-radius: 8px; font-weight: 700; font-size: 12px; cursor: pointer; text-align: center; }
+    .backup-btn:hover { background: #30363D; }
 
     .daily-card { background: #161B22; border: 1.5px solid #21262D; border-radius: 14px; padding: 14px; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
     .daily-title { font-size: 14px; font-weight: 800; color: #38BDF8; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #21262D; padding-bottom: 7px; }
@@ -164,6 +169,20 @@
     .daily-stat-val.blue { color: #38BDF8; }
 
     .btn-del-day { background: rgba(239, 68, 68, 0.15); color: #F87171; border: 1px solid rgba(239, 68, 68, 0.4); padding: 4px 9px; border-radius: 7px; font-size: 11px; font-weight: 700; cursor: pointer; }
+
+    /* 🖥️ 💻 RWD 響應式佈局 (平板與電腦版) */
+    @media (min-width: 768px) {
+      body { padding: 24px 16px; }
+      .app-container { max-width: 900px; }
+      .header { font-size: 26px; margin-bottom: 18px; }
+      .rwd-flex-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+      .daily-grid { grid-template-columns: repeat(4, 1fr); }
+      .input-card input[type="number"] { font-size: 30px; }
+    }
+
+    @media (min-width: 1100px) {
+      .app-container { max-width: 1050px; }
+    }
 
     /* ☀️ 白天模式 */
     body.day-theme { background-color: #F3F4F6; color: #0F172A; }
@@ -204,8 +223,10 @@
     body.day-theme .btn-rec-done { background: #059669; color: #FFFFFF; }
     body.day-theme .record-total { color: #059669; }
     body.day-theme .record-subsidy { color: #B45309; }
-    body.day-theme .date-picker-card { background: #FFFFFF; border-color: #CBD5E1; }
+    body.day-theme .date-picker-card, body.day-theme .storage-card { background: #FFFFFF; border-color: #CBD5E1; }
     body.day-theme .date-picker-card input[type="date"] { background: #F8FAFC; border-color: #CBD5E1; color: #059669; }
+    body.day-theme .backup-btn { background: #F1F5F9; color: #0284C7; border-color: #CBD5E1; }
+    body.day-theme .backup-btn:hover { background: #E2E8F0; }
     body.day-theme .daily-card { background: #FFFFFF; border-color: #E2E8F0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
     body.day-theme .daily-title { color: #0284C7; border-bottom-color: #E2E8F0; }
     body.day-theme .daily-stat { background: #F8FAFC; border-color: #E2E8F0; }
@@ -231,90 +252,112 @@
       <span>接單形態 / 新單起算：</span>
       <button id="themeToggleBtn" class="theme-toggle-btn" onclick="toggleManualTheme()">🌙 夜間模式 (按此切換)</button>
     </div>
-    <div class="btn-group">
-      <button class="type-btn active" id="btnSingleOrder" onclick="handlePresetOrNewSingle(1, this)">1 單 (獨立起算/新單)</button>
-      <button class="type-btn" onclick="setPresetOrders(2, this)">2 疊</button>
-      <button class="type-btn" onclick="setPresetOrders(3, this)">3 疊</button>
-    </div>
 
-    <div class="action-btn-row">
-      <button class="add-clamp-btn" onclick="addClampedOrder(1)">+1 夾</button>
-      <button class="add-clamp-btn" onclick="addClampedOrder(2)">+2 夾</button>
-    </div>
+    <div class="rwd-flex-layout">
+      <!-- 左側/上方：控制與計時器 -->
+      <div>
+        <div class="btn-group">
+          <button class="type-btn active" id="btnSingleOrder" onclick="handlePresetOrNewSingle(1, this)">1 單 (獨立起算/新單)</button>
+          <button class="type-btn" onclick="setPresetOrders(2, this)">2 疊</button>
+          <button class="type-btn" onclick="setPresetOrders(3, this)">3 疊</button>
+        </div>
 
-    <div class="input-card">
-      <div class="section-label" style="text-align: center; display: block;">跳單/夾單單價 (元)</div>
-      <input type="number" id="offerPrice" placeholder="0" inputmode="numeric" onfocus="this.select()">
-      
-      <div class="quick-price-group">
-        <button type="button" class="quick-price-btn" onclick="setQuickPrice(45)">$45</button>
-        <button type="button" class="quick-price-btn" onclick="setQuickPrice(90)">$90</button>
-        <button type="button" class="quick-price-btn" onclick="setQuickPrice(135)">$135</button>
+        <div class="action-btn-row">
+          <button class="add-clamp-btn" onclick="addClampedOrder(1)">+1 夾</button>
+          <button class="add-clamp-btn" onclick="addClampedOrder(2)">+2 夾</button>
+        </div>
+
+        <div class="input-card">
+          <div class="section-label" style="text-align: center; display: block;">跳單/夾單單價 (元)</div>
+          <input type="number" id="offerPrice" placeholder="0" inputmode="numeric" onfocus="this.select()">
+          
+          <div class="quick-price-group">
+            <button type="button" class="quick-price-btn" onclick="setQuickPrice(45)">$45</button>
+            <button type="button" class="quick-price-btn" onclick="setQuickPrice(90)">$90</button>
+            <button type="button" class="quick-price-btn" onclick="setQuickPrice(135)">$135</button>
+          </div>
+        </div>
+
+        <div class="timer-card">
+          <div class="driver-anim-box" id="driverAnimBox">
+            <svg width="50" height="42" viewBox="0 0 56 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 15H7M1 23H9M3 31H8" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+              <ellipse cx="29" cy="42" rx="20" ry="2.8" fill="rgba(0,0,0,0.35)"/>
+              <rect x="7" y="11" width="15" height="18" rx="3.5" fill="#00E676" stroke="#050B14" stroke-width="1.8"/>
+              <path d="M7 14.5C7 12.5 8.5 11 10.5 11H18.5C20.5 11 22 12.5 22 14.5V15.5H7V14.5Z" fill="#0284C7" stroke="#050B14" stroke-width="1.2"/>
+              <line x1="10" y1="20" x2="19" y2="20" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+              <rect x="19" y="17" width="3" height="8" fill="#FFD700" stroke="#050B14" stroke-width="0.8" rx="0.5"/>
+              <path d="M20 20C20 16 23 14 27 14C31 14 34 16 35 20V28H20V20Z" fill="#38BDF8" stroke="#050B14" stroke-width="1.8"/>
+              <path d="M26 22L35 26" stroke="#050B14" stroke-width="2.8" stroke-linecap="round"/>
+              <circle cx="36" cy="26" r="2.2" fill="#FFD700" stroke="#050B14" stroke-width="1"/>
+              <circle cx="28" cy="9.5" r="8.5" fill="#FFD700" stroke="#050B14" stroke-width="1.8"/>
+              <path d="M26.5 7C30.5 7 35 9 35.5 13H24.5C24.5 10 25.5 7 26.5 7Z" fill="#050B14"/>
+              <path d="M28.5 8C31.5 8 33.5 9 34 11H28.5V8Z" fill="#38BDF8" opacity="0.8"/>
+              <circle cx="24" cy="13" r="1.5" fill="#FF8A80"/>
+              <path d="M36 17L43 27H34L35.5 17H36Z" fill="#F0F4F8" stroke="#050B14" stroke-width="1.8"/>
+              <path d="M26 21H35" stroke="#050B14" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="43.5" cy="19" r="2.8" fill="#FFFFFF" stroke="#050B14" stroke-width="1.2"/>
+              <circle cx="43.5" cy="19" r="1.5" fill="#FFD700"/>
+              <path d="M14 28H42C45 28 46.5 30.5 45.5 33.5C44.5 36.5 41 36.5 38.5 36.5H17.5C14.5 36.5 12.5 34.5 13.5 31.5L14 28Z" fill="#00E676" stroke="#050B14" stroke-width="1.8"/>
+              <rect x="22" y="29" width="12" height="4" fill="#161B22" rx="1.5"/>
+              <g class="wheel-rotate" style="transform-origin: 19px 36.5px;">
+                <circle cx="19" cy="36.5" r="6" fill="#050B14" stroke="#FFFFFF" stroke-width="1.8"/>
+                <circle cx="19" cy="36.5" r="2" fill="#FFD700"/>
+                <line x1="19" y1="30.5" x2="19" y2="42.5" stroke="#FFFFFF" stroke-width="1.2"/>
+                <line x1="13" y1="36.5" x2="25" y2="36.5" stroke="#FFFFFF" stroke-width="1.2"/>
+              </g>
+              <g class="wheel-rotate" style="transform-origin: 39px 36.5px;">
+                <circle cx="39" cy="36.5" r="6" fill="#050B14" stroke="#FFFFFF" stroke-width="1.8"/>
+                <circle cx="39" cy="36.5" r="2" fill="#FFD700"/>
+                <line x1="39" y1="30.5" x2="39" y2="42.5" stroke="#FFFFFF" stroke-width="1.2"/>
+                <line x1="33" y1="36.5" x2="45" y2="36.5" stroke="#FFFFFF" stroke-width="1.2"/>
+              </g>
+            </svg>
+            <span style="font-size:13px; font-weight:800; color:#00E676;">外送騎士全力配送中...</span>
+          </div>
+
+          <div class="timer-ctrls">
+            <button class="btn btn-start" id="startBtn" onclick="startMasterTimer()">🚀 開始接單起算</button>
+            <button class="btn btn-reset-sm" onclick="resetAll()">🔄 重置</button>
+          </div>
+
+          <div class="section-label" style="margin-top: 10px; text-align: left; display: block;">各單獨立計時計時與送達確認：</div>
+          <div class="sub-orders-list" id="subOrdersList"></div>
+        </div>
+      </div>
+
+      <!-- 右側/下方：當日即時明細 -->
+      <div>
+        <div class="records-header">
+          <span>📋 本日即時跑單明細</span>
+          <span id="dayTotal" style="color: #00E676; font-size: 17px;">累計: $0.00</span>
+        </div>
+        <div id="recordsList"></div>
       </div>
     </div>
-
-    <div class="timer-card">
-      <div class="driver-anim-box" id="driverAnimBox">
-        <svg width="50" height="42" viewBox="0 0 56 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 15H7M1 23H9M3 31H8" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-          <ellipse cx="29" cy="42" rx="20" ry="2.8" fill="rgba(0,0,0,0.35)"/>
-          <rect x="7" y="11" width="15" height="18" rx="3.5" fill="#00E676" stroke="#050B14" stroke-width="1.8"/>
-          <path d="M7 14.5C7 12.5 8.5 11 10.5 11H18.5C20.5 11 22 12.5 22 14.5V15.5H7V14.5Z" fill="#0284C7" stroke="#050B14" stroke-width="1.2"/>
-          <line x1="10" y1="20" x2="19" y2="20" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
-          <rect x="19" y="17" width="3" height="8" fill="#FFD700" stroke="#050B14" stroke-width="0.8" rx="0.5"/>
-          <path d="M20 20C20 16 23 14 27 14C31 14 34 16 35 20V28H20V20Z" fill="#38BDF8" stroke="#050B14" stroke-width="1.8"/>
-          <path d="M26 22L35 26" stroke="#050B14" stroke-width="2.8" stroke-linecap="round"/>
-          <circle cx="36" cy="26" r="2.2" fill="#FFD700" stroke="#050B14" stroke-width="1"/>
-          <circle cx="28" cy="9.5" r="8.5" fill="#FFD700" stroke="#050B14" stroke-width="1.8"/>
-          <path d="M26.5 7C30.5 7 35 9 35.5 13H24.5C24.5 10 25.5 7 26.5 7Z" fill="#050B14"/>
-          <path d="M28.5 8C31.5 8 33.5 9 34 11H28.5V8Z" fill="#38BDF8" opacity="0.8"/>
-          <circle cx="24" cy="13" r="1.5" fill="#FF8A80"/>
-          <path d="M36 17L43 27H34L35.5 17H36Z" fill="#F0F4F8" stroke="#050B14" stroke-width="1.8"/>
-          <path d="M26 21H35" stroke="#050B14" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="43.5" cy="19" r="2.8" fill="#FFFFFF" stroke="#050B14" stroke-width="1.2"/>
-          <circle cx="43.5" cy="19" r="1.5" fill="#FFD700"/>
-          <path d="M14 28H42C45 28 46.5 30.5 45.5 33.5C44.5 36.5 41 36.5 38.5 36.5H17.5C14.5 36.5 12.5 34.5 13.5 31.5L14 28Z" fill="#00E676" stroke="#050B14" stroke-width="1.8"/>
-          <rect x="22" y="29" width="12" height="4" fill="#161B22" rx="1.5"/>
-          <g class="wheel-rotate" style="transform-origin: 19px 36.5px;">
-            <circle cx="19" cy="36.5" r="6" fill="#050B14" stroke="#FFFFFF" stroke-width="1.8"/>
-            <circle cx="19" cy="36.5" r="2" fill="#FFD700"/>
-            <line x1="19" y1="30.5" x2="19" y2="42.5" stroke="#FFFFFF" stroke-width="1.2"/>
-            <line x1="13" y1="36.5" x2="25" y2="36.5" stroke="#FFFFFF" stroke-width="1.2"/>
-          </g>
-          <g class="wheel-rotate" style="transform-origin: 39px 36.5px;">
-            <circle cx="39" cy="36.5" r="6" fill="#050B14" stroke="#FFFFFF" stroke-width="1.8"/>
-            <circle cx="39" cy="36.5" r="2" fill="#FFD700"/>
-            <line x1="39" y1="30.5" x2="39" y2="42.5" stroke="#FFFFFF" stroke-width="1.2"/>
-            <line x1="33" y1="36.5" x2="45" y2="36.5" stroke="#FFFFFF" stroke-width="1.2"/>
-          </g>
-        </svg>
-        <span style="font-size:13px; font-weight:800; color:#00E676;">外送騎士全力配送中...</span>
-      </div>
-
-      <div class="timer-ctrls">
-        <button class="btn btn-start" id="startBtn" onclick="startMasterTimer()">🚀 開始接單起算</button>
-        <button class="btn btn-reset-sm" onclick="resetAll()">🔄 重置</button>
-      </div>
-
-      <div class="section-label" style="margin-top: 10px; text-align: left; display: block;">各單獨立計時計時與送達確認：</div>
-      <div class="sub-orders-list" id="subOrdersList"></div>
-    </div>
-
-    <div class="records-header">
-      <span>📋 本日即時跑單明細 (每單獨立列出)</span>
-      <span id="dayTotal" style="color: #00E676; font-size: 17px;">累計: $0.00</span>
-    </div>
-    <div id="recordsList"></div>
   </div>
 
   <div id="reportView" style="display: none;">
+    <!-- 日期篩選區塊 -->
     <div class="date-picker-card">
       <div class="section-label" style="margin-bottom: 6px;">🗓️ 選擇查詢日期區間 (06:00 跑單日)：</div>
-      <div style="display: flex; gap: 6px; align-items: center;">
+      <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
         <input type="date" id="startDate" onchange="renderDailyReport()">
         <span style="color: #8A99AD; font-size: 12px; font-weight: 700;">至</span>
         <input type="date" id="endDate" onchange="renderDailyReport()">
-        <button type="button" onclick="clearDateFilter()" style="padding: 7px 9px; background: #21262D; color: #38BDF8; border: 1px solid #30363D; border-radius: 7px; font-weight: 700; font-size: 12px; cursor: pointer; white-space: nowrap;">重置</button>
+        <button type="button" onclick="clearDateFilter()" style="padding: 7px 12px; background: #21262D; color: #38BDF8; border: 1px solid #30363D; border-radius: 7px; font-weight: 700; font-size: 12px; cursor: pointer; white-space: nowrap;">重置</button>
+      </div>
+    </div>
+
+    <!-- 💾 儲存與備份紀錄功能 -->
+    <div class="storage-card">
+      <div class="section-label" style="margin-bottom: 4px;">💾 紀錄儲存與備份管理：</div>
+      <div style="font-size: 11px; color: #8A99AD; margin-bottom: 8px;">跑單資料已自動儲存於瀏覽器 LocalStorage 中，亦可匯出檔案備份：</div>
+      <div class="backup-btn-group">
+        <button class="backup-btn" onclick="exportRecordsJSON()">📥 匯出 JSON 備份</button>
+        <button class="backup-btn" onclick="exportRecordsCSV()">📊 匯出 CSV 報表</button>
+        <button class="backup-btn" onclick="document.getElementById('importFileInput').click()">📤 匯入 JSON 備份</button>
+        <input type="file" id="importFileInput" style="display: none;" accept=".json" onchange="importRecordsJSON(event)">
       </div>
     </div>
     
@@ -355,6 +398,7 @@
     return `${m}分${s}秒`;
   }
 
+  /* 💾 自動儲存與載入功能 */
   function loadRecords() {
     try {
       const saved = localStorage.getItem('delivery_records_v2');
@@ -399,6 +443,77 @@
     try {
       localStorage.setItem('delivery_records_v2', JSON.stringify(records));
     } catch(e) {}
+  }
+
+  /* 📤 📥 備份匯出與匯入功能 */
+  function exportRecordsJSON() {
+    if (records.length === 0) {
+      alert("目前尚無任何跑單紀錄可備份！");
+      return;
+    }
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(records, null, 2));
+    const dlAnchor = document.createElement('a');
+    dlAnchor.setAttribute("href", dataStr);
+    dlAnchor.setAttribute("download", `delivery_records_backup_${new Date().toISOString().slice(0,10)}.json`);
+    document.body.appendChild(dlAnchor);
+    dlAnchor.click();
+    dlAnchor.remove();
+  }
+
+  function exportRecordsCSV() {
+    if (records.length === 0) {
+      alert("目前尚無任何跑單紀錄可匯出！");
+      return;
+    }
+    let csvContent = "\uFEFF跑單日期,時間,標籤,餐廳,單價,耗時,時間公式金額,補貼金額,單趟實拿總額\n";
+    records.forEach(r => {
+      const wDate = r.workday || getWorkdayDate(r.timestamp || r.id);
+      if (r.subOrders) {
+        r.subOrders.forEach(so => {
+          csvContent += `"${wDate}","${so.completedClockTime || ''}","${so.label || ''}","${so.restaurant || ''}",${so.offerPrice},"${so.timeText || ''}",${so.rawTimePay},${so.subsidy},${parseFloat(so.offerPrice) + parseFloat(so.subsidy)}\n`;
+        });
+      }
+    });
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `delivery_report_${new Date().toISOString().slice(0,10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
+
+  function importRecordsJSON(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        const importedData = JSON.parse(e.target.result);
+        if (Array.isArray(importedData)) {
+          if (confirm(`確定要匯入 ${importedData.length} 筆跑單紀錄嗎？這將會與現有紀錄進行合併。`)) {
+            const existingIds = new Set(records.map(r => r.id));
+            importedData.forEach(item => {
+              if (!existingIds.has(item.id)) {
+                records.push(item);
+              }
+            });
+            records.sort((a,b) => b.timestamp - a.timestamp);
+            saveRecords();
+            renderRecords();
+            renderDailyReport();
+            alert("🎉 紀錄備份成功匯入！");
+          }
+        } else {
+          alert("匯入失敗：檔案格式不正確！");
+        }
+      } catch(err) {
+        alert("匯入失敗：無法解析 JSON 檔案！");
+      }
+    };
+    reader.readAsText(file);
+    event.target.value = '';
   }
 
   function getWorkdayDate(timestamp) {
@@ -785,7 +900,7 @@
         <div class="sub-header">
           <div class="sub-title">
             <span>📦 ${o.label}</span>
-            <span class="order-price-badge" id="sub-badge-price-${o.id}">💰 單價 ${priceDisplay}</span>
+            <span class="order-price-badge" id="sub-badge-price-${o.id}">?? 單價 ${priceDisplay}</span>
           </div>
           <div class="sub-badge">${o.isCompleted ? `已送達 (${o.completedClockTime})` : (o.startTimestamp ? '配送計時中...' : '等待接單')}</div>
         </div>
@@ -810,10 +925,7 @@
     const totalIncome = totalOffer + totalTimeSubsidy;
 
     setTimeout(() => {
-      alert(`🎉 跑單全數送達！
-接單單價加總：$${totalOffer.toFixed(2)}
-超過單價時間補貼：+$${totalTimeSubsidy.toFixed(2)}
-最終實拿總額：$${totalIncome.toFixed(2)}`);
+      alert(`🎉 跑單全數送達！\n接單單價加總：$${totalOffer.toFixed(2)}\n超過單價時間補貼：+$${totalTimeSubsidy.toFixed(2)}\n最終實拿總額：$${totalIncome.toFixed(2)}`);
       document.getElementById('offerPrice').value = '';
       initOrders(1);
       document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
