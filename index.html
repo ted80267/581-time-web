@@ -373,50 +373,56 @@
     return `${m}分${s}秒`;
   }
 
+  /* 💾 自動儲存與載入功能 (包含版本升級與資料安全容錯) */
   function loadRecords() {
     try {
       const saved = localStorage.getItem('delivery_records_v2');
       if (saved) {
-        records = JSON.parse(saved);
-        records.forEach(r => {
-          if (r.subOrders && r.subOrders.length === 1) {
-            if (r.offerPrice > 0 && r.offerPrice != r.subOrders[0].offerPrice) {
-              r.subOrders[0].offerPrice = r.offerPrice;
-            }
-          }
-          let totalOffer = 0;
-          let totalSubsidy = 0;
-          if (r.subOrders) {
-            r.subOrders.forEach(so => {
-              if (so.elapsedSecs === undefined || so.elapsedSecs === null) {
-                so.elapsedSecs = parseTimeTextToSecs(so.timeText);
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          records = parsed;
+          records.forEach(r => {
+            if (r.subOrders && r.subOrders.length === 1) {
+              if (r.offerPrice > 0 && r.offerPrice != r.subOrders[0].offerPrice) {
+                r.subOrders[0].offerPrice = r.offerPrice;
               }
-              const offer = parseFloat(so.offerPrice) > 0 ? parseFloat(so.offerPrice) : 45.0;
-              const raw = (so.elapsedSecs > 0) ? (so.elapsedSecs * PER_SEC_RATE) : (parseFloat(so.rawTimePay) || 0);
-              so.rawTimePay = raw.toFixed(2);
-              
-              const sub = Math.max(0, raw - offer);
-              so.offerPrice = offer;
-              so.subsidy = sub.toFixed(2);
-              
-              totalOffer += offer;
-              totalSubsidy += sub;
-            });
-          }
-          r.offerPrice = totalOffer;
-          r.subsidy = totalSubsidy.toFixed(2);
-          r.totalIncome = (totalOffer + totalSubsidy).toFixed(2);
-        });
+            }
+            let totalOffer = 0;
+            let totalSubsidy = 0;
+            if (r.subOrders) {
+              r.subOrders.forEach(so => {
+                if (so.elapsedSecs === undefined || so.elapsedSecs === null) {
+                  so.elapsedSecs = parseTimeTextToSecs(so.timeText);
+                }
+                const offer = parseFloat(so.offerPrice) > 0 ? parseFloat(so.offerPrice) : 45.0;
+                const raw = (so.elapsedSecs > 0) ? (so.elapsedSecs * PER_SEC_RATE) : (parseFloat(so.rawTimePay) || 0);
+                so.rawTimePay = raw.toFixed(2);
+                
+                const sub = Math.max(0, raw - offer);
+                so.offerPrice = offer;
+                so.subsidy = sub.toFixed(2);
+                
+                totalOffer += offer;
+                totalSubsidy += sub;
+              });
+            }
+            r.offerPrice = totalOffer;
+            r.subsidy = totalSubsidy.toFixed(2);
+            r.totalIncome = (totalOffer + totalSubsidy).toFixed(2);
+          });
+        }
       }
     } catch(e) {
-      records = [];
+      console.error("載入舊紀錄失敗:", e);
     }
   }
 
   function saveRecords() {
     try {
       localStorage.setItem('delivery_records_v2', JSON.stringify(records));
-    } catch(e) {}
+    } catch(e) {
+      console.error("寫入 localStorage 失敗:", e);
+    }
   }
 
   function exportRecordsJSON() {
@@ -476,7 +482,7 @@
             saveRecords();
             renderRecords();
             renderDailyReport();
-            alert("🎉 紀錄備份成功匯入！");
+            alert("\uD83C\uDF89 紀錄備份成功匯入！");
           }
         } else {
           alert("匯入失敗：檔案格式不正確！");
@@ -693,7 +699,7 @@
       item.offerPrice = parseFloat(value) || 0;
       const badge = document.getElementById(`sub-badge-price-${id}`);
       if (badge) {
-        badge.innerText = `💰 單價 ${item.offerPrice > 0 ? '$' + item.offerPrice : '未填'}`;
+        badge.innerText = `\uD83D\uDCB0 單價 ${item.offerPrice > 0 ? '$' + item.offerPrice : '未填'}`;
       }
       if (item.isCompleted) {
         const basePrice = item.offerPrice > 0 ? item.offerPrice : 45.0;
@@ -849,7 +855,7 @@
         contentHtml = `
           ${timerBadgeHtml}
           <div style="display: flex; gap: 8px; margin-bottom: 10px;">
-            <input type="number" class="restaurant-input" style="width: 100px; margin-bottom: 0;" placeholder="💰 單價" value="${o.offerPrice > 0 ? o.offerPrice : ''}" inputmode="numeric" onfocus="this.select()" oninput="updateSubOfferPrice(${o.id}, this.value)">
+            <input type="number" class="restaurant-input" style="width: 100px; margin-bottom: 0;" placeholder="\uD83D\uDCB0 單價" value="${o.offerPrice > 0 ? o.offerPrice : ''}" inputmode="numeric" onfocus="this.select()" oninput="updateSubOfferPrice(${o.id}, this.value)">
             <input type="text" class="restaurant-input" style="flex: 1; margin-bottom: 0;" placeholder="🏪 餐廳名稱 (選填)" value="${o.restaurant}" oninput="updateRestaurant(${o.id}, this.value)">
           </div>
           <button class="btn-sub-complete" onclick="completeSubOrder(${o.id})">🏁 完成 ${o.label} 送達</button>
@@ -873,7 +879,7 @@
         <div class="sub-header">
           <div class="sub-title">
             <span>📦 ${o.label}</span>
-            <span class="order-price-badge" id="sub-badge-price-${o.id}">💰 單價 ${priceDisplay}</span>
+            <span class="order-price-badge" id="sub-badge-price-${o.id}">\uD83D\uDCB0 單價 ${priceDisplay}</span>
           </div>
           <div class="sub-badge">${o.isCompleted ? `已送達 (${o.completedClockTime})` : (o.startTimestamp ? '配送計時中...' : '等待接單')}</div>
         </div>
@@ -898,10 +904,7 @@
     const totalIncome = totalOffer + totalTimeSubsidy;
 
     setTimeout(() => {
-      alert(`🎉 跑單全數送達！
-接單單價加總：$${totalOffer.toFixed(2)}
-超過單價時間補貼：+$${totalTimeSubsidy.toFixed(2)}
-最終實拿總額：$${totalIncome.toFixed(2)}`);
+      alert(`🎉 跑單全數送達！\n接單單價加總：$${totalOffer.toFixed(2)}\n超過單價時間補貼：+$${totalTimeSubsidy.toFixed(2)}\n最終實拿總額：$${totalIncome.toFixed(2)}`);
       document.getElementById('offerPrice').value = '';
       initOrders(1);
       document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
@@ -1005,7 +1008,7 @@
           <div style="font-weight:bold; margin-bottom:4px; font-size:13px;">📦 ${r.stackCount} 趟明細</div>
           ${subRowsHtml}
           <div style="font-size:11px; opacity:0.9; margin-top:4px; display:flex; align-items:center; gap:4px;">
-            <span>💰 單價: $</span>
+            <span>\uD83D\uDCB0 單價: $</span>
             <input type="number" id="rec-offer-input-${r.id}" class="rec-offer-input" value="${r.offerPrice}" inputmode="numeric" onfocus="this.select()" onchange="updateRecordDetail(${r.id}, 0)">
           </div>
         </div>
@@ -1166,13 +1169,22 @@
     });
   }
 
+  // 初始化與防背景被系統回收修復
   loadRecords();
   applyTheme();
 
   document.addEventListener("visibilitychange", () => {
     applyTheme();
-    if (document.visibilityState === "visible" && isRunning) {
-      updateTimerDisplay();
+    if (document.visibilityState === "visible") {
+      // 切回前台時自動重新讀取落盤紀錄，確保被背景回收記憶體後依然能還原歷史明細
+      loadRecords();
+      renderRecords();
+      if (document.getElementById('reportView').style.display !== 'none') {
+        renderDailyReport();
+      }
+      if (isRunning) {
+        updateTimerDisplay();
+      }
     }
   });
 
